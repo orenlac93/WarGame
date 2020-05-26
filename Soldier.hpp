@@ -10,7 +10,7 @@ class Soldier
     public:
         Soldier();
         Soldier(uint p_num);
-        ~Soldier();
+        virtual ~Soldier();
 
         int get_p_num() const;
 

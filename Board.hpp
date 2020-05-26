@@ -23,6 +23,11 @@ class Board {
     Board(uint numRows, uint numCols) : 
       board(numRows, std::vector<Soldier*>(numCols, nullptr)) {}
 
+    ~Board()//
+    {
+		board.clear();
+    }  
+
     // operator for putting soldiers on the game-board during initialization.
     Soldier*& operator[](std::pair<int,int> location);
     
@@ -44,6 +49,11 @@ class Board {
 
     // returns true iff the board contains one or more soldiers of the given player.
     bool has_soldiers(uint player_number) const;
+
+
+    //draw the board status (for testing)
+    void drawBoard() const;
+
 };
 
 }

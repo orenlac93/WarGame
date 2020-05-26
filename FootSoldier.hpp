@@ -9,7 +9,7 @@ class FootSoldier : public Soldier
     public:
         FootSoldier();
         FootSoldier(int p_num);
-        ~FootSoldier();
+        virtual ~FootSoldier();
         void move();
         virtual void shoot();
 

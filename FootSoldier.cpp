@@ -15,7 +15,7 @@ using namespace std;
 
     FootSoldier::~FootSoldier()
     {
-        cout << "FootSoldier ctor" << endl;
+        cout << "FootSoldier dtor" << endl;
     }
 
     void FootSoldier::move()

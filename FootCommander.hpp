@@ -11,7 +11,10 @@ class FootCommander : public FootSoldier
         FootCommander(int p_num);
         ~FootCommander();
         
+        virtual void move();
         virtual void shootAll();
+
+        std::string printType();
 
 
 };

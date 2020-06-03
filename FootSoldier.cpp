@@ -21,9 +21,16 @@ using namespace std;
     void FootSoldier::move()
     {
         cout << "FootSoldier moving..." << endl;
+        
     }
 
     void FootSoldier::shoot()
     {
         cout << "FootSoldier shooting..." << endl;
     }
+
+    std::string FootSoldier::printType()
+    {
+        return "FS";
+    }
+

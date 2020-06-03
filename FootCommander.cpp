@@ -17,8 +17,18 @@ using namespace std;
     {
         cout << "FootCommander dtor" << endl;
     }
+
+    void FootCommander::move()
+    {
+        cout << "FootCommander moving..." << endl;
+    }
         
     void FootCommander::shootAll()
     {
         cout << "FootCommander shootAll()" << endl;
+    }
+
+    std::string FootCommander::printType()
+    {
+        return "FC";
     }

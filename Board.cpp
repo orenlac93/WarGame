@@ -1,4 +1,7 @@
 #include"Board.hpp"
+#include"Soldier.hpp"
+#include"FootSoldier.hpp"
+#include"FootCommander.hpp"
 #include<iostream>
 
 using namespace std;
@@ -22,6 +25,35 @@ Soldier* WarGame::Board::operator[](std::pair<int,int> location) const
 void WarGame::Board::move(uint player_number, std::pair<int,int> source, MoveDIR direction)
 {
     cout << "Board::move()" << endl;
+
+    if(this->board[source.first][source.second]->get_p_num() == player_number)
+    {
+        if(direction == Up)
+        {
+            board[source.first + 1][source.second] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+        else if(direction == Down)
+        {
+            board[source.first - 1][source.second] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+        else if(direction == Right)
+        {
+            board[source.first][source.second + 1] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+        else
+        {
+            board[source.first][source.second - 1] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+    }
+    else
+    {
+        /* code */
+    }
+    
 }
 
 bool WarGame::Board::has_soldiers(uint player_number) const
@@ -51,7 +83,7 @@ void WarGame::Board::drawBoard() const
 {
     for(int i = 0; i < this->board.size() ; i++)
     {
-        cout << " ___";
+        cout << " ____";
     }
     cout << "\n";
 
@@ -62,11 +94,13 @@ void WarGame::Board::drawBoard() const
         {
             if(board[i][j] != nullptr)
             {
-                cout << "_" << "*" << "_|";
+                //cout << "_" << "*" << "_|";
+                
+                cout << "_" << board[i][j]->printType() << "_|";
             }
             else
             {
-                cout << "___|";
+                cout << "____|";
             }
         }
         cout << "" << endl;

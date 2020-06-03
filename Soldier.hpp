@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 
+
 class Soldier
 {
     protected:
@@ -15,6 +16,8 @@ class Soldier
         int get_p_num() const;
 
         virtual void move();
+
+        virtual std::string printType();
 
 
 };

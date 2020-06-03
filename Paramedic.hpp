@@ -1,15 +1,15 @@
 #pragma once
 #include "Soldier.hpp"
 
-class FootSoldier : public Soldier
+class Paramedic : public Soldier
 {
     protected:
         int damage;
 
     public:
-        FootSoldier();
-        FootSoldier(int p_num);
-        virtual ~FootSoldier();
+        Paramedic();
+        Paramedic(int p_num);
+        virtual ~Paramedic();
         virtual void move();
         virtual void shoot();
 

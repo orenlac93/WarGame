@@ -28,3 +28,8 @@ void Soldier::move()
 {
     cout << "Soldier moving..." << endl;
 }
+
+string Soldier::printType()
+{
+    return "S_";
+}

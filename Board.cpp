@@ -24,34 +24,99 @@ Soldier* WarGame::Board::operator[](std::pair<int,int> location) const
 
 void WarGame::Board::move(uint player_number, std::pair<int,int> source, MoveDIR direction)
 {
+    if(this->board[source.first][source.second] == nullptr)
+    {
+        throw std::invalid_argument("There is no soldier at this location!");
+    }
+
     cout << "Board::move()" << endl;
 
-    if(this->board[source.first][source.second]->get_p_num() == player_number)
+    if(this->board[source.first][source.second]->get_p_num() == 1)
     {
         if(direction == Up)
         {
+            if(this->board[source.first + 1][source.second] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
             board[source.first + 1][source.second] = board[source.first][source.second];
             board[source.first][source.second] = nullptr;
         }
         else if(direction == Down)
         {
+            if(this->board[source.first - 1][source.second] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
             board[source.first - 1][source.second] = board[source.first][source.second];
             board[source.first][source.second] = nullptr;
         }
         else if(direction == Right)
         {
+            if(this->board[source.first][source.second - 1] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
+            board[source.first][source.second - 1] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+        else
+        {
+            if(this->board[source.first][source.second + 1] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
+            board[source.first][source.second + 1] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+    }
+    else // player id = 2
+    {
+        if(direction == Up)
+        {
+            if(this->board[source.first - 1][source.second] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
+            board[source.first - 1][source.second] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+        else if(direction == Down)
+        {
+            if(source.first + 1 > this->board.capacity()-1)
+            {
+                throw std::invalid_argument("This location is out of the board!");
+            }
+            if(this->board[source.first + 1][source.second] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
+            
+            board[source.first + 1][source.second] = board[source.first][source.second];
+            board[source.first][source.second] = nullptr;
+        }
+        else if(direction == Right)
+        {
+            if(this->board[source.first][source.second + 1] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
             board[source.first][source.second + 1] = board[source.first][source.second];
             board[source.first][source.second] = nullptr;
         }
         else
         {
+            if(this->board[source.first][source.second - 1] != nullptr)
+            {
+                throw std::invalid_argument("There is another soldier at this location!");
+            }
+            if(source.second - 1 < 0)
+            {
+                throw std::invalid_argument("This location is out of the board!");
+            }
             board[source.first][source.second - 1] = board[source.first][source.second];
             board[source.first][source.second] = nullptr;
         }
-    }
-    else
-    {
-        /* code */
     }
     
 }
